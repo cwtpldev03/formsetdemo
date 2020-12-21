@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<section>
+	<table class="table-bordered table">
+		<tbody>
+			<tr>
+				<th>Sr No.</th>
+		        <th>cal P</th>
+		        <th>m1</th>
+		        <th>m2</th>
+		        <th>m3</th>
+		        <th>mvmi</th>
+		        <th>deviation</th>
+		        <th>repeat_ability</th>
+		        <th>hysteresis</th>
+		        <th>expand_uncertainity</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+            	<td>{{forloop.counter}}</td>
+                <td>{{i.cal_p}}</td>
+                <td>{{i.m1}}</td>
+                <td>{{i.m2}}</td>
+                <td>{{i.m3}}</td>
+                <td>{{i.mvmi}}</td>
+                <td>{{i.deviation}}</td>
+                <td>{{i.repeat_ability}}</td>
+                <td>{{i.hysteresis}}</td>
+                <td>{{i.expand_uncertainity}}</td>
+            </tr>
+            {% endfor %}
+		</body>
+	</table>
+</section>
+{% endblock %}

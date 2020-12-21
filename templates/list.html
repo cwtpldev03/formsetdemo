@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block container %}
+<table class="table">
+    <tr>
+        <th>Certificate</th>
+        <th>Author</th>
+    </tr>
+{% for i in certificate %}
+    <tr>
+        <td><a href="{% url 'detail' pk=i.pk %}">{{i.name}}</a></td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}

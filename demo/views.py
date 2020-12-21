@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import generic
 from .forms import PressureForm, PressureFormset
-from .models import PressureFormat
+from .models import PressureFormat, Certificate
 # Create your views here.
 def create_book_model_form(request):
     template_name = 'create_normal.html'
@@ -23,7 +23,18 @@ def create_book_model_form(request):
     })
 
 class PressureListView(generic.ListView):
-    model = PressureFormat
-    context_object_name = 'pressure'
+    model = Certificate
+    context_object_name = 'certificate'
     template_name = 'list.html'
+    print('>>>>>>>>>>>>>>>>>>>>>>>>',PressureFormat.objects.values('name').distinct())
+
+def certdetail(request, pk):
+    context ={}
+    get_obj = Certificate.objects.get(pk = pk)
+    contextstr = str(get_obj)
+    context["data"] = PressureFormat.objects.filter(name_id=1)
+    print(context["data"])
+    print(type(contextstr))
+    # context["data"] = PressureFormat.objects.filter(name=contextstr)
+    return render(request, 'certdetail.html', context)
 

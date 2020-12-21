@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class PressureFormat(models.Model):
-	name = models.ForeignKey('Certificate', on_delete=models.CASCADE)
+	name = models.ForeignKey('Certificate', on_delete=models.CASCADE, related_name='certificates')
 	cal_p = models.FloatField()
 	m1 = models.FloatField()
 	m2 = models.FloatField()
@@ -15,6 +15,7 @@ class PressureFormat(models.Model):
 
 	def __str__(self):
 		return str(self.name)
+
 
 class Certificate(models.Model):
 	name = models.CharField(max_length=256)
